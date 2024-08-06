@@ -5,7 +5,7 @@ Write-Host -ForegroundColor Green "Welcome To IRAQ SOFT"
 write-host
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$DownloadURL1 = 'https://raw.githubusercontent.com/toofysss/IRAQ_SOFT/main/IQ.cmd'
+$DownloadURL1 = 'https://raw.githubusercontent.com/toofysss/IQ_SOFT/main/Batch/Home.cmd'
 
 $URLs = @($DownloadURL1)
 $RandomURL1 = Get-Random -InputObject $URLs

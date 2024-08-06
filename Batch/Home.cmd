@@ -25,10 +25,11 @@ set "desktopPath=%USERPROFILE%\Downloads"
 set "Exclution_Remotly_Loc=C:\Program Files\RDP Wrapper"
 set "Exclution_Sip_Loc=C:\Sip"
 set SUBNET_MASK=255.255.255.0
-set REST_App_Url=%~dp0REST_App.sql
-set SPEEDO_App_Url=%~dp0SPEEDO_App.sql
+set REST_App_Url=https://raw.githubusercontent.com/toofysss/IQ_SOFT/main/Batch/REST_App.sql
+set SPEEDO_App_Url=https://raw.githubusercontent.com/toofysss/IQ_SOFT/main/Batch/SPEEDO_App.sql
 
 ::::::::::::::::::::::::::::::::: For Activity :::::::::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::::::::::: For SQL SERVER Info :::::::::::::::::::::::::::::::::::::::::::
 set SQL_Connection_SPEEDDO=.\SALES_DEV -U sa -P 12345 -d SPEEDOO_DB
 set SQL_Connection_SPEEDDO_REST=.\SALES_DEV -U sa -P 12345 -d RESTAURANT_DB
@@ -43,12 +44,14 @@ set dd=%dt:~6,2%
 set date=%yyyy%-%mm%-%dd%
 set Backup_Loc="C:\Program Files (x86)\Microsoft SQL Server\MSSQL11.SALES_DEV\MSSQL\Backup\Speedo-%date%-%RandomNumber%.bak"
 
-set Script_To_Factory=%~dp0Factory.sql
+set Script_To_Factory=https://raw.githubusercontent.com/toofysss/IQ_SOFT/main/Batch/Factory.sql
 ::::::::::::::::::::::::::::::::: For SQL SERVER Info :::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::: For Database Info :::::::::::::::::::::::::::::::::::::::::::
-set Empty_Database_Url=%~dp0Empty.BAK
-set Market_Database_Url=%~dp0Market.BAK
-set pharmacy_Database_Url=%~dp0pharmacy.bak
+set "Donwload_Backup=C:\Program Files (x86)\Microsoft SQL Server\MSSQL11.SALES_DEV\MSSQL\Backup"
+set Empty_Database_Url=https://github.com/toofysss/IQ_SOFT/raw/main/Batch/Empty.BAK
+set Market_Database_Url=https://github.com/toofysss/IQ_SOFT/raw/main/Batch/Market.BAK
+set pharmacy_Database_Url=https://github.com/toofysss/IQ_SOFT/raw/main/Batch/pharmacy.bak
+
 ::::::::::::::::::::::::::::::::: For Database Info :::::::::::::::::::::::::::::::::::::::::::
 
 
@@ -344,7 +347,7 @@ echo:                                 Activity
 echo: 
 echo:                   [1] Remotly             [2] SIP            
 echo:                   [3] Connect Computer    [4] Captin App            
-echo:                   [5] Invoice App          [0] Go To Back             
+echo:                   [5] Invoice App         [0] Go To Back             
 echo:             __________________________________________________      
 echo: 
 set /p Choice="Enter A Menu Choice : "
@@ -480,7 +483,8 @@ if "%Choice%" == "1" (
 goto Captin_App
 
 :Connect_Captin
-sqlcmd -S %SQL_Connection_SPEEDDO_REST%  -i "!REST_App_Url!" >nul 2>&1
+powershell -Command "Invoke-WebRequest -Uri '%REST_App_Url%' -OutFile '%Donwload_Backup%\REST_App.sql' -UseBasicParsing"
+sqlcmd -S %SQL_Connection_SPEEDDO%  -i  "%Donwload_Backup%\REST_App.sql" >nul 2>&1
 powershell -Command "Set-NetFirewallProfile -Profile Public -DisabledInterfaceAliases !INTERFACE_NAME!"
 netsh interface ipv4 delete address name="!INTERFACE_NAME!" addr=!STATIC_IP!
 netsh interface ipv4 set address name="!INTERFACE_NAME!" static !STATIC_IP! %SUBNET_MASK%
@@ -529,7 +533,9 @@ if "%Choice%" == "1" (
 goto Access_App
 
 :Connect_Access
-sqlcmd -S %SQL_Connection_SPEEDDO%  -i "!SPEEDO_App_Url!" >nul 2>&1
+
+powershell -Command "Invoke-WebRequest -Uri '%SPEEDO_App_Url%' -OutFile '%Donwload_Backup%\SPEEDO_App.sql' -UseBasicParsing"
+sqlcmd -S %SQL_Connection_SPEEDDO%  -i  "%Donwload_Backup%\SPEEDO_App.sql" >nul 2>&1
 powershell -Command "Set-NetFirewallProfile -Profile Public -DisabledInterfaceAliases !INTERFACE_NAME!"
 netsh interface ipv4 delete address name="!INTERFACE_NAME!" addr=!STATIC_IP!
 netsh interface ipv4 set address name="!INTERFACE_NAME!" static !STATIC_IP! %SUBNET_MASK%
@@ -765,7 +771,9 @@ goto SQL_SPEEDO
 
 :SQL_SPEEDO_Query_Link
 sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" with format" >nul 2>&1
-sqlcmd -S %SQL_Connection_SPEEDDO%  -i "!querylink!"  >nul 2>&1
+powershell -Command "Invoke-WebRequest -Uri '!querylink!' -OutFile '%Donwload_Backup%\Factory.sql' -UseBasicParsing"
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='%Download_Backup%\database_backup.bak' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO%  -i "%Donwload_Backup%\Factory.sql"
 if %ERRORLEVEL% EQU 0 (
     echo complete.
 ) else (
@@ -775,13 +783,17 @@ PAUSE
 goto SQL_SPEEDO
 
 :Start_Restore_Database
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" with format" >nul 2>&1
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='!Database_Url!' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
+
+powershell -Command "Invoke-WebRequest -Uri '%Database_Url%' -OutFile '%Donwload_Backup%\database_backup.bak' -UseBasicParsing"
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='%Download_Backup%\database_backup.bak' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
+
 if %ERRORLEVEL% EQU 0 (
-    echo complete.
+    echo Restore complete.
 ) else (
     echo There was an error with the SQL command.
 )
+
 PAUSE
 goto Database
 
