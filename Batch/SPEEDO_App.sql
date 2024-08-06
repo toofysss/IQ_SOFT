@@ -1,0 +1,7 @@
+use [SPEEDOO_DB]
+go
+EXEC sp_changedbowner 'sa'
+
+go
+ALTER DATABASE [SPEEDOO_DB] SET ENABLE_BROKER
+go

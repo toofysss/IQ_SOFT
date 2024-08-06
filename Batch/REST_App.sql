@@ -1,0 +1,7 @@
+use [RESTAURANT_DB]
+go
+EXEC sp_changedbowner 'sa'
+
+go
+ALTER DATABASE [RESTAURANT_DB] SET ENABLE_BROKER
+go
