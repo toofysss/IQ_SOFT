@@ -344,7 +344,7 @@ echo:
 echo:                                 Activity
 echo: 
 echo:                   [1] Remotly             [2] SIP            
-echo:                   [3] Change PC IP  [4] Captin App            
+echo:                   [3] Change PC IP        [4] Captin App            
 echo:                   [5] Invoice App         [0] Go Back             
 echo:             __________________________________________________      
 echo: 
