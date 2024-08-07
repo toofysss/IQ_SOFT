@@ -119,6 +119,10 @@ set HPRT_File=HPRT_2022.1.exe
 @REM Printer Tool
 set Printer_Tool_Url=https://www.dropbox.com/scl/fi/w36cj9klh00ginyhp21wq/printer-tools.rar?rlkey=oj1imyo9hvenqf7txcyp6nqcj&st=ejiwbu1o&dl=0
 set Printer_Tool_File=printer-tools.rar
+
+@REM Xprinter_2024.2
+set Xprinter_2024_Url=https://www.dropbox.com/scl/fi/h18dsmwm3br0x5qja4u8y/Xprinter_2024.2.exe?rlkey=lbobracdddhfw5706myj9jb16&st=rdbgbzp1&dl=0
+set Xprinter_2024_File=Xprinter_2024.2.exe
 ::::::::::::::::::::::::::::::::: For Printer Info :::::::::::::::::::::::::::::::::::::::::::
 
 :MainMenu
@@ -645,7 +649,7 @@ echo:                   [3] BARCODE printer   [4] IPOS JJ printer
 echo:                   [5] POS 80 Series     [6] AG POS Printer 
 echo:                   [7] ZJ Printer        [8] XPrinter 
 echo:                   [9] HPRT Printer      [10] Printer Tool 
-echo:                   [0] Go Back  
+echo:                   [11] Xprinter_2024.2  [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -698,6 +702,11 @@ if "%Choice%" == "9" (
 if "%Choice%" == "10" (
     set url=%Printer_Tool_Url%
     set output=%desktopPath%\%Printer_Tool_File%
+    goto Start_Download
+)
+if "%Choice%" == "11" (
+    set url=%Xprinter_2024_Url%
+    set output=%desktopPath%\%Xprinter_2024_File%
     goto Start_Download
 )
 
