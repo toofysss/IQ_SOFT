@@ -195,7 +195,7 @@ echo:
 echo:                                  Users
 echo: 
 echo:                   [1] New Admin        [2] Reset Admin Password                    
-echo:                   [3] Reset Admin      [0] Go To Back                    
+echo:                   [3] Delete Users     [0] Go To Back                    
 echo:             __________________________________________________      
 echo: 
 
@@ -266,7 +266,7 @@ echo:
 echo:                                  Users
 echo: 
 echo:                   [1] New Admin        [2] Reset Admin Password                    
-echo:                   [3] Reset Admin      [0] Go To Back       
+echo:                   [3] Delete USers     [0] Go To Back       
 echo:             __________________________________________________      
 echo: 
 
