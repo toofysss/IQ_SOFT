@@ -157,7 +157,7 @@ echo:
 echo:                                SQL SERVER
 echo: 
 echo:                   [1] SPEEDO       [2] SPEEDO REST                    
-echo:                   [0] Go To Back                      
+echo:                   [0] Go Back                      
 echo:             __________________________________________________      
 echo: 
 
@@ -177,7 +177,7 @@ echo:                                SQL SERVER
 echo: 
 echo:                                SPEEDO_REST
 echo: 
-echo:                   [1] Users        [0] Go To Back                     
+echo:                   [1] Users        [0] Go Back                     
 echo:             __________________________________________________      
 echo: 
 set /p Choice="Enter A Menu Choice : "
@@ -195,7 +195,7 @@ echo:
 echo:                                  Users
 echo: 
 echo:                   [1] New Admin        [2] Reset Admin Password                    
-echo:                   [3] Delete Users     [0] Go To Back                    
+echo:                   [3] Reset Admin      [0] Go Back                    
 echo:             __________________________________________________      
 echo: 
 
@@ -203,18 +203,18 @@ sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "SELECT USER_CODE as ID, USER_NAME as
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
     set /p Pass="Enter Password: "
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=INSERT into T_USERS (USER_CODE, USER_NAME, USER_PWD, LEVEL_CODE, ACTIVE, LOG_IN, IS_ENC, APP_PWD) values (!RandomNumber!, 'IRAQ SOFT', '!Pass!', 1, 1, 0, 0, '$2a$11$B08VqpwcVTXiYHYhMj8qpeeJ/UM9S/LZCmaH7RSS6TxrESG4J8Sei')"
     if !Confirm! == 1 goto SQL_Query
 ) else if "%Choice%" == "2" (
     set /p ID="Enter ID: "
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=UPDATE T_USERS SET USER_PWD ='fpd2Te7d3NwzGck5qAgK8g==' ,IS_ENC =1 where USER_CODE ='!ID!'"
     if !Confirm! == 1 goto SQL_Query
 ) else if "%Choice%" == "3" (
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=Delete from T_USERS; INSERT into T_USERS (USER_CODE, USER_NAME, USER_PWD, LEVEL_CODE, ACTIVE, LOG_IN, IS_ENC, APP_PWD) values (1, 'Admin', 22, 1, 1, 0, 1, '$2a$11$B08VqpwcVTXiYHYhMj8qpeeJ/UM9S/LZCmaH7RSS6TxrESG4J8Sei')"
     if !Confirm! == 1 goto SQL_Query
@@ -231,12 +231,12 @@ color 0C
 cls
 echo: 
 echo: 
-echo:                                IRAQ SOFT
+echo:                               IRAQ SOFT
 echo: 
-echo:                                SQL SERVER
+echo:                               SQL SERVER
 echo: 
 echo:                   [1] Users            [2] Active Telegram
-echo:                   [3] Items            [0] Go To Back                               
+echo:                   [3] Items            [0] Go Back                               
 echo:             __________________________________________________      
 echo: 
 
@@ -245,7 +245,7 @@ if "%Choice%" == "1" (
     goto SQL_SPEEDO_USERS
 ) else if "%Choice%" == "2" (
     set /p ID="Enter Group ID: "
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=UPDATE T_CONFIGRATION SET TELEGRAM ='False;True;True;True;True;True;True;False;True;True;True;True;True;True;True;True;',TELE_MAIN='Z8YEv4CT7AjhcVKk9Vnp4A==',TL_ID = '!ID!'"
     if !Confirm! == 1 goto SQL_SPEEDO_Query
@@ -261,12 +261,12 @@ setlocal enabledelayedexpansion
 cls
 echo: 
 echo: 
-echo:                                  SPEEDO
+echo:                                 SPEEDO
 echo: 
 echo:                                  Users
 echo: 
 echo:                   [1] New Admin        [2] Reset Admin Password                    
-echo:                   [3] Delete USers     [0] Go To Back       
+echo:                   [3] Reset Admin      [0] Go Back       
 echo:             __________________________________________________      
 echo: 
 
@@ -274,18 +274,18 @@ sqlcmd -S %SQL_Connection_SPEEDDO% -Q "SELECT USER_CODE as ID, USER_NAME as Name
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
     set /p Pass="Enter Password: "
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=insert into T_USERS (USER_CODE,USER_NAME,USER_PWD,LEVEL_CODE,ACTIVE,LOG_IN,BOX_CODE,IS_ENC,SECURETY_CODE,MANDOOB_CODE,STORE_CODE,TYPE_PRICE_CODE,APP_PWD,LEVEL_APP,DRIVER_CODE,TYPE_CH_OFFER) values (!RandomNumber!,'IRAQ SOFT','!Pass!',1,1,0,5000,1,3,-10,-10,-10,NULL,1,0,'')"
     if !Confirm! == 1 goto SQL_SPEEDO_Query
 ) else if "%Choice%" == "2" (
     set /p ID="Enter ID: "
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=UPDATE T_USERS SET USER_PWD ='fpd2Te7d3NwzGck5qAgK8g==' ,IS_ENC =1 where USER_CODE ='!ID!'"
     if !Confirm! == 1 goto SQL_SPEEDO_Query
 ) else if "%Choice%" == "3" (
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=Delete from T_USERS; insert into T_USERS (USER_CODE,USER_NAME,USER_PWD,LEVEL_CODE,ACTIVE,LOG_IN,BOX_CODE,IS_ENC,SECURETY_CODE,MANDOOB_CODE,STORE_CODE,TYPE_PRICE_CODE,APP_PWD,LEVEL_APP,DRIVER_CODE,TYPE_CH_OFFER) values (1,'IRAQ SOFT',22,1,1,0,5000,1,3,-10,-10,-10,NULL,1,0,'')"
     if !Confirm! == 1 goto SQL_SPEEDO_Query
@@ -300,30 +300,28 @@ color 0C
 cls
 echo: 
 echo: 
-echo:                                IRAQ SOFT
+echo:                              IRAQ SOFT
 echo: 
 echo:                                Items
 echo: 
-echo:           [1] Enable Active Items          [2] Items Zero
-echo:                   تاجتنملا ليعفت           ةيلوالا داوملا ريفصت                   
-echo:           [3] Recovery But Items           [0] Go To Back     
-echo:       ةيلوالا ةدصزالا عم ماظنلا ريفصت                                     
+echo:           [1] Enable Deleted Items         [2] Items Zero QY
+echo:           [3] Delete Data But Items        [0] Go Back     
 echo:             __________________________________________________      
 echo: 
 
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=UPDATE T_ITEMS set ACTIVE = 1"
     if !Confirm! == 1 goto SQL_SPEEDO_Query
 ) else if "%Choice%" == "2" (
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "Query=UPDATE T_STORE_BOX set ST_IN=0, ST_OUT=0 where BILL_NUMBER=0 UPDATE T_BUY_DETAILS SET QTY=0,TOTAL=0,TOTAL_COST=0,QTY_IN=0,QTY_OUT=0,TOTAL_OUT=0 WHERE BILL_NUMBER=0"
     if !Confirm! == 1 goto SQL_SPEEDO_Query
 ) else if "%Choice%" == "3" (
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "querylink=!Script_To_Factory!"
     if !Confirm! == 1 goto SQL_SPEEDO_Query_Link
@@ -346,8 +344,8 @@ echo:
 echo:                                 Activity
 echo: 
 echo:                   [1] Remotly             [2] SIP            
-echo:                   [3] Connect Computer    [4] Captin App            
-echo:                   [5] Invoice App         [0] Go To Back             
+echo:                   [3] Change PC IP  [4] Captin App            
+echo:                   [5] Invoice App         [0] Go Back             
 echo:             __________________________________________________      
 echo: 
 set /p Choice="Enter A Menu Choice : "
@@ -408,22 +406,22 @@ echo:
 echo: 
 echo:                                IRAQ SOFT
 echo: 
-echo:                               Connect Computer
+echo:                              Change PC IP
 echo: 
 echo:                   [1] Wifi          [2] Ethernet            
-echo:                   [0] Go To Back                      
+echo:                   [0] Go Back                      
 echo:             __________________________________________________      
 echo: 
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
     set /p STATIC_IP="Enter The IP :"
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "INTERFACE_NAME=Wi-Fi" 
     if !Confirm! == 1 goto Connecting_Computer
 ) else if "%Choice%" == "2" (
     set /p STATIC_IP="Enter The IP :"
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "INTERFACE_NAME=Ethernet"
     if !Confirm! == 1 goto Connecting_Computer
@@ -455,24 +453,24 @@ color 07
 cls
 echo: 
 echo: 
-echo:                                IRAQ SOFT
+echo:                              IRAQ SOFT
 echo: 
-echo:                               Connect Computer
+echo:                             Change PC IP
 echo: 
 echo:                   [1] Wifi          [2] Ethernet            
-echo:                   [0] Go To Back                      
+echo:                   [0] Go Back                      
 echo:             __________________________________________________      
 echo: 
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
     set /p STATIC_IP="Enter The IP :"
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "INTERFACE_NAME=Wi-Fi"
     if !Confirm! == 1 goto Connect_Captin
 ) else if "%Choice%" == "2" (
     set /p STATIC_IP="Enter The IP :"
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "INTERFACE_NAME=Ethernet"
     if !Confirm! == 1 goto Connect_Captin
@@ -505,24 +503,24 @@ color 07
 cls
 echo: 
 echo: 
-echo:                                IRAQ SOFT
+echo:                              IRAQ SOFT
 echo: 
-echo:                               Connect Computer
+echo:                             Change PC IP
 echo: 
 echo:                   [1] Wifi          [2] Ethernet            
-echo:                   [0] Go To Back                      
+echo:                   [0] Go Back                      
 echo:             __________________________________________________      
 echo: 
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
     set /p STATIC_IP="Enter The IP :"
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "INTERFACE_NAME=Wi-Fi"
     if !Confirm! == 1 goto Connect_Access
 ) else if "%Choice%" == "2" (
     set /p STATIC_IP="Enter The IP :"
-    choice /C:YN /N /M "Are you sure you want to continue? (Y/N): "
+    choice /C:YN /N /M "Are you sure you want continue? (Y/N): "
     set "Confirm=!errorlevel!"
     set "INTERFACE_NAME=Ethernet"
     if !Confirm! == 1 goto Connect_Access
@@ -559,14 +557,14 @@ echo:
 echo: 
 echo:                                IRAQ SOFT
 echo: 
-echo:                                Download
+echo:                                 Download
 echo: 
 echo:                   [1] SPEEDO FULL        [2] SPEEDO UPDATE           
 echo:                   [3] SPEEDO REST FULL   [4] SPEEDO REST UPDATE  
 echo:                   [5] AMAN               [6] SQL 
 echo:                   [7] SUPER POINT        [8] POS 
 echo:                   [9] SIP                [10] Remotly 
-echo:                   [11] Point Charge Url  [0] Go To Back  
+echo:                   [11] Point shipping    [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -647,7 +645,7 @@ echo:                   [3] BARCODE printer   [4] IPOS JJ printer
 echo:                   [5] POS 80 Series     [6] AG POS Printer 
 echo:                   [7] ZJ Printer        [8] XPrinter 
 echo:                   [9] HPRT Printer      [10] Printer Tool 
-echo:                   [0] Go To Back  
+echo:                   [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -724,8 +722,8 @@ echo:                                IRAQ SOFT
 echo: 
 echo:                                 Database
 echo: 
-echo:                   [1] Pharmacy        [2] Markets      
-echo:                   [3] Empty           [0] Go To Back  
+echo:                   [1] Pharmacy        [2] Market      
+echo:                   [3] Empty Data      [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -747,7 +745,7 @@ goto Printers
 ::::::::::::::::::::::::::::::::: For Database  :::::::::::::::::::::::::::::::::::::::::::
 
 :SQL_Query
-sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "BACKUP DATABASE RESTAURANT_DB TO DISK="%Backup_Loc%" with format" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "BACKUP DATABASE RESTAURANT_DB DISK="%Backup_Loc%" with format" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO_REST%  -Q "%Query%" >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
     echo complete.
@@ -759,7 +757,7 @@ goto SQL_SPEEDO_REST
 
 
 :SQL_SPEEDO_Query
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" with format" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB DISK="%Backup_Loc%" with format" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO%  -Q "%Query%" >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
     echo complete.
@@ -770,7 +768,7 @@ PAUSE
 goto SQL_SPEEDO
 
 :SQL_SPEEDO_Query_Link
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" with format" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB DISK="%Backup_Loc%" with format" >nul 2>&1
 powershell -Command "Invoke-WebRequest -Uri '!querylink!' -OutFile '%Donwload_Backup%\Factory.sql' -UseBasicParsing"
 sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='%Download_Backup%\database_backup.bak' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO%  -i "%Donwload_Backup%\Factory.sql"
@@ -785,7 +783,7 @@ goto SQL_SPEEDO
 :Start_Restore_Database
 
 powershell -Command "Invoke-WebRequest -Uri '%Database_Url%' -OutFile '%Donwload_Backup%\database_backup.bak' -UseBasicParsing"
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='%Download_Backup%\database_backup.bak' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
 
 if %ERRORLEVEL% EQU 0 (
@@ -805,7 +803,7 @@ if %errorlevel% neq 0 (
     timeout /t 10
     goto Start_Download
 )
-echo Download Complete. Waiting To Opening The File...
+echo Download Complete. Waiting Opening The File...
 start "" %output%
 pause
 goto Download
