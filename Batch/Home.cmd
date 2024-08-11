@@ -21,6 +21,11 @@ title IRAQ SOFT
 set "desktopPath=%USERPROFILE%\Downloads"
 ::::::::::::::::::::::::::::::::: For ALL Info :::::::::::::::::::::::::::::::::::::::::::
 
+
+::::::::::::::::::::::::::::::::: For Troubleshoot :::::::::::::::::::::::::::::::::::::::::::
+set "localePath=%USERPROFILE%\AppData\Local\IRAQSOFT\"
+ 
+::::::::::::::::::::::::::::::::: For Troubleshoot :::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::: For Activity :::::::::::::::::::::::::::::::::::::::::::
 set "Exclution_Remotly_Loc=C:\Program Files\RDP Wrapper"
 set "Exclution_Sip_Loc=C:\Sip"
@@ -120,9 +125,13 @@ set HPRT_File=HPRT_2022.1.exe
 set Printer_Tool_Url=https://www.dropbox.com/scl/fi/w36cj9klh00ginyhp21wq/printer-tools.rar?rlkey=oj1imyo9hvenqf7txcyp6nqcj&st=ejiwbu1o&dl=0
 set Printer_Tool_File=printer-tools.rar
 
-@REM Xprinter_2024.2
-set Xprinter_2024_Url=https://www.dropbox.com/scl/fi/h18dsmwm3br0x5qja4u8y/Xprinter_2024.2.exe?rlkey=lbobracdddhfw5706myj9jb16&st=rdbgbzp1&dl=0
-set Xprinter_2024_File=Xprinter_2024.2.exe
+@REM Xprinter Barcode
+set Xprinter_Barcode_Url=https://www.dropbox.com/scl/fi/h18dsmwm3br0x5qja4u8y/Xprinter_2024.2.exe?rlkey=lbobracdddhfw5706myj9jb16&st=rdbgbzp1&dl=0
+set Xprinter_Barcode_File=Xprinter_2024.2.exe
+
+@REM Xprinter Pos
+set Xprinter_Pos_Url=https://www.dropbox.com/scl/fi/ubc34mg992027q5i097uh/XPrinter-Driver-Setup-V8.2.exe?rlkey=vftaurbhff2xsc8txaxtc76ka&e=1&st=0v0i0ikg&dl=0
+set Xprinter_Pos_File=XPrinter-Driver-Setup-V8.2.exe
 ::::::::::::::::::::::::::::::::: For Printer Info :::::::::::::::::::::::::::::::::::::::::::
 
 :MainMenu
@@ -145,8 +154,9 @@ if "%Choice%" == "0" exit /b
 if "%Choice%" == "1" goto SQL_SERVER
 if "%Choice%" == "2" goto Activity
 if "%Choice%" == "3" goto Download
-if "%Choice%" == "4" goto Troubleshoot
+if "%Choice%" == "4" goto Update
 if "%Choice%" == "5" goto Printers
+if "%Choice%" == "6" goto Troubleshoot
 if "%Choice%" == "7" goto Database
 goto MainMenu
 
@@ -199,7 +209,7 @@ echo:
 echo:                                  Users
 echo: 
 echo:                   [1] New Admin        [2] Reset Admin Password                    
-echo:                   [3] Reset Admin      [0] Go Back                    
+echo:                   [3] Delete Users     [0] Go Back                    
 echo:             __________________________________________________      
 echo: 
 
@@ -270,7 +280,7 @@ echo:
 echo:                                  Users
 echo: 
 echo:                   [1] New Admin        [2] Reset Admin Password                    
-echo:                   [3] Reset Admin      [0] Go Back       
+echo:                   [3] Delete Users     [0] Go Back       
 echo:             __________________________________________________      
 echo: 
 
@@ -334,6 +344,7 @@ if "%Choice%" == "1" (
 )
 goto SQL_SPEEDO_ITEMS
 ::::::::::::::::::::::::::::::::: For SQL SERVER :::::::::::::::::::::::::::::::::::::::::::
+
 
 
 
@@ -552,7 +563,6 @@ goto Access_App
 
 ::::::::::::::::::::::::::::::::: For ACTIVITY :::::::::::::::::::::::::::::::::::::::::::
 
-
 ::::::::::::::::::::::::::::::::: For DOWNLOAD :::::::::::::::::::::::::::::::::::::::::::
 :Download
 setlocal
@@ -633,7 +643,6 @@ goto Download
 
 ::::::::::::::::::::::::::::::::: For DOWNLOAD :::::::::::::::::::::::::::::::::::::::::::
 
-
 ::::::::::::::::::::::::::::::::: For Printers  :::::::::::::::::::::::::::::::::::::::::::
 :Printers
 setlocal
@@ -649,7 +658,8 @@ echo:                   [3] BARCODE printer   [4] IPOS JJ printer
 echo:                   [5] POS 80 Series     [6] AG POS Printer 
 echo:                   [7] ZJ Printer        [8] XPrinter 
 echo:                   [9] HPRT Printer      [10] Printer Tool 
-echo:                   [11] Xprinter_2024.2  [0] Go Back  
+echo:                   [11] Xprinter Barcode [12] Xprinter Pos  
+echo:                   [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -705,8 +715,13 @@ if "%Choice%" == "10" (
     goto Start_Download
 )
 if "%Choice%" == "11" (
-    set url=%Xprinter_2024_Url%
-    set output=%desktopPath%\%Xprinter_2024_File%
+    set url=%Xprinter_Barcode_Url%
+    set output=%desktopPath%\%Xprinter_Barcode_File%
+    goto Start_Download
+)
+if "%Choice%" == "12" (
+    set url=%Xprinter_Pos_Url%
+    set output=%desktopPath%\%Xprinter_Pos_File%
     goto Start_Download
 )
 
@@ -715,9 +730,54 @@ goto Printers
 ::::::::::::::::::::::::::::::::: For Printers  :::::::::::::::::::::::::::::::::::::::::::
 
 
+::::::::::::::::::::::::::::::::: For Update :::::::::::::::::::::::::::::::::::::::::::
+:Update 
+
+echo This Operation Not Used Right Now 
+pause
+goto MainMenu
+goto Update
+
+::::::::::::::::::::::::::::::::: For Update :::::::::::::::::::::::::::::::::::::::::::
+
+
 ::::::::::::::::::::::::::::::::: For Troubleshoot  :::::::::::::::::::::::::::::::::::::::::::
+:Troubleshoot
+setlocal
+cls
+echo: 
+echo: 
+echo:                                IRAQ SOFT
+echo: 
+echo:                               Troubleshoot
+echo: 
+echo:                   [1] Date/Time           [2] Delete Locale         
+echo:                   [3] Enable Sql Service  [0] Go Back  
+echo:             __________________________________________________   
 
+set /p Choice="Enter A Menu Choice : "
+if "%Choice%" == "1" (
+    reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortDate /t REG_SZ /d yyyy/MM/dd /f>nul 2>&1
+    taskkill /f /im explorer.exe & start explorer.exe>nul 2>&1
+    echo Success
+    pause
+    goto Troubleshoot
+)  else if "%Choice%" == "2" (
+    rmdir /S /Q "%localePath%"
+    echo Success
+    pause
+    goto Troubleshoot
+) else if "%Choice%" == "3" (
+    sc config "MSSQL$SALES_DEV" start= auto >nul 2>&1
+    sc start "MSSQL$SALES_DEV" >nul 2>&1
+    echo Success
+    pause
+    goto Troubleshoot
+)   else (
+    goto MainMenu
+)
 
+goto Troubleshoot
 ::::::::::::::::::::::::::::::::: For Troubleshoot  :::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::: For Database  :::::::::::::::::::::::::::::::::::::::::::
@@ -806,7 +866,11 @@ goto Database
 
 
 :Start_Download
-curl -L --progress-bar --retry 5 --retry-delay 10 -C - -o %output% %url%
+
+netsh advfirewall firewall add rule name="Allow curl Inbound" dir=in action=allow program="C:\Windows\System32\curl.exe" enable=yes >nul 2>&1
+netsh advfirewall firewall add rule name="Allow curl Outbound" dir=out action=allow program="C:\Program Files\curl\curl.exe" enable=yes >nul 2>&1
+
+curl -L --progress-bar --retry 5 --retry-delay 10 -k -o %output% %url%
 if %errorlevel% neq 0 (
     echo Download interrupted. Retrying...
     timeout /t 10
@@ -816,5 +880,3 @@ echo Download Complete. Waiting Opening The File...
 start "" %output%
 pause
 goto Download
-
-
