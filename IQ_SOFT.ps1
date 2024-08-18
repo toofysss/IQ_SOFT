@@ -11,8 +11,13 @@ $URLs = @($DownloadURL1)
 $RandomURL1 = Get-Random -InputObject $URLs
 $response = Invoke-WebRequest -Uri $RandomURL1 -UseBasicParsing
 
-# Set the download path to the user's Downloads folder
-$DownloadFolder = "$env:USERPROFILE\AppData\Local"
+
+$DownloadFolder = "$env:USERPROFILE\AppData\Local\IQ_SOFT"
+
+if (-Not (Test-Path -Path $DownloadFolder)) {
+    New-Item -ItemType Directory -Path $DownloadFolder
+}
+
 $rand = [Guid]::NewGuid().Guid
 $FilePath = "$DownloadFolder\MAS_$rand.cmd"
 
