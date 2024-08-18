@@ -872,7 +872,8 @@ if %errorlevel% neq 0 (
     timeout /t 10
     goto Start_Download
 )
-echo Download Complete. Waiting Opening The File...
+
+echo Download Complete. Waiting To Opening The File...
 start "" %output%
 pause
 goto Download
