@@ -866,10 +866,6 @@ goto Database
 
 
 :Start_Download
-
-netsh advfirewall firewall add rule name="Allow curl Inbound" dir=in action=allow program="C:\Windows\System32\curl.exe" enable=yes >nul 2>&1
-netsh advfirewall firewall add rule name="Allow curl Outbound" dir=out action=allow program="C:\Program Files\curl\curl.exe" enable=yes >nul 2>&1
-
 curl -L --progress-bar --retry 5 --retry-delay 10 -C - -o %output% %url%
 if %errorlevel% neq 0 (
     echo Download interrupted. Retrying...
