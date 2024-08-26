@@ -66,10 +66,10 @@ set Speedo_Full_File=SPEEDOO-POS-1.3.7.6-FULL.exe
 set Speedo_Update_Url=https://www.dropbox.com/scl/fi/r03a6ujar6lwp09s2r3pm/SPEEDOO-POS-1.3.7.6-UPDATE.exe?rlkey=kae6meq14d5w0e19h9fra9ed3&e=2&dl=0
 set Speedo_Update_File=SPEEDOO-POS-1.3.7.6-UPDATE.exe
 @REM Speedo Rest Url
-set Speedo_Rest_Update_Url=https://www.dropbox.com/scl/fi/gnrjofsyk7kx80mcst0da/Speedoo-REST-3.0.5.3-UPDATE.exe?rlkey=yr29c8l7ula7gjzedq7zzjt01&st=rg27jrws&dl=0
-set Speedo_Rest_Update_File=Speedoo REST 3.0.5.3 UPDATE.exe
-set Speedo_Rest_Full_Url=https://www.dropbox.com/scl/fi/izvlyhl097ve0act1qoc5/Speedoo-APP-3.0.5.3-FULL.exe?rlkey=d5jg4uhbmfmwpdvsql8pj0mjy&st=x95q9shh&dl=0
-set Speedo_Rest_Full_File=Speedoo REST 3.0.5.3_FULL.exe
+set Speedo_Rest_Update_Url=https://www.dropbox.com/scl/fi/gnrjofsyk7kx80mcst0da/Speedoo-REST-3.0.5.3-UPDATE.exe?rlkey=yr29c8l7ula7gjzedq7zzjt01&dl=0
+set Speedo_Rest_Update_File=Speedoo-REST-3.0.5.3-UPDATE.exe
+set Speedo_Rest_Full_Url=https://www.dropbox.com/scl/fi/izvlyhl097ve0act1qoc5/Speedoo-APP-3.0.5.3-FULL.exe?rlkey=d5jg4uhbmfmwpdvsql8pj0mjy&st=cb32fgpm&dl=0
+set Speedo_Rest_Full_File=Speedoo-REST-3.0.5.3-FULL.exe
 @REM SQL Url
 set SQL_Url=https://www.dropbox.com/scl/fi/fitraeunq2m7bx0pff31y/SQLEXPRWT_x86_ENU-2.exe?rlkey=wwj2f0pbd621gnkl0od4naea9&st=85hiov5f&dl=0
 set SQL_File=SQLEXPRWT_x86_ENU-2.exe
