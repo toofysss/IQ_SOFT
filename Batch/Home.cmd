@@ -132,6 +132,10 @@ set Xprinter_Barcode_File=Xprinter_2024.2.exe
 @REM Xprinter Pos
 set Xprinter_Pos_Url=https://www.dropbox.com/scl/fi/ubc34mg992027q5i097uh/XPrinter-Driver-Setup-V8.2.exe?rlkey=vftaurbhff2xsc8txaxtc76ka&e=1&st=0v0i0ikg&dl=0
 set Xprinter_Pos_File=XPrinter-Driver-Setup-V8.2.exe
+
+@REM POSBANK A7
+set POSBANK_A7_Url=https://www.dropbox.com/scl/fi/4xu9lwaoxfgp93massp14/EasySet_MiniPrinter_WD_win7_8_v2.3.3.exe?rlkey=nx7decmhcb0dm05kty05twbwx&st=34x3fwbb&dl=0
+set POSBANK_A7_File=EasySet_MiniPrinter_WD_win7_8_v2.3.3.exe
 ::::::::::::::::::::::::::::::::: For Printer Info :::::::::::::::::::::::::::::::::::::::::::
 
 :MainMenu
@@ -659,7 +663,7 @@ echo:                   [5] POS 80 Series     [6] AG POS Printer
 echo:                   [7] ZJ Printer        [8] XPrinter 
 echo:                   [9] HPRT Printer      [10] Printer Tool 
 echo:                   [11] Xprinter Barcode [12] Xprinter Pos  
-echo:                   [0] Go Back  
+echo:                   [13] POSBANK A7       [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -722,6 +726,11 @@ if "%Choice%" == "11" (
 if "%Choice%" == "12" (
     set url=%Xprinter_Pos_Url%
     set output=%desktopPath%\%Xprinter_Pos_File%
+    goto Start_Download
+)
+if "%Choice%" == "13" (
+    set url=%POSBANK_A7_Url%
+    set output=%desktopPath%\%POSBANK_A7_File%
     goto Start_Download
 )
 
