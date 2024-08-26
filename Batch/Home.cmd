@@ -823,7 +823,7 @@ goto Printers
 ::::::::::::::::::::::::::::::::: For Database  :::::::::::::::::::::::::::::::::::::::::::
 
 :SQL_Query
-sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "BACKUP DATABASE RESTAURANT_DB DISK="%Backup_Loc%" with format" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "BACKUP DATABASE RESTAURANT_DB TO DISK="%Backup_Loc%" with format" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO_REST%  -Q "%Query%" >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
     echo complete.
@@ -835,7 +835,7 @@ goto SQL_SPEEDO_REST
 
 
 :SQL_SPEEDO_Query
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB DISK="%Backup_Loc%" with format" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO%  -Q "%Query%" >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
     echo complete.
@@ -846,7 +846,7 @@ PAUSE
 goto SQL_SPEEDO
 
 :SQL_SPEEDO_Query_Link
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB DISK="%Backup_Loc%" with format" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
 powershell -Command "Invoke-WebRequest -Uri '!querylink!' -OutFile '%Donwload_Backup%\Factory.sql' -UseBasicParsing"
 sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='%Download_Backup%\database_backup.bak' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO%  -i "%Donwload_Backup%\Factory.sql"
@@ -861,7 +861,7 @@ goto SQL_SPEEDO
 :Start_Restore_Database
 
 powershell -Command "Invoke-WebRequest -Uri '%Database_Url%' -OutFile '%Donwload_Backup%\database_backup.bak' -UseBasicParsing"
-sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" WITH FORMAT" >nul 2>&1
 sqlcmd -S %SQL_Connection_SPEEDDO% -Q "USE [master]; ALTER DATABASE SPEEDOO_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE; RESTORE DATABASE SPEEDOO_DB FROM DISK='%Download_Backup%\database_backup.bak' WITH REPLACE; ALTER DATABASE SPEEDOO_DB SET MULTI_USER;" >nul 2>&1
 
 if %ERRORLEVEL% EQU 0 (
@@ -881,8 +881,7 @@ if %errorlevel% neq 0 (
     timeout /t 10
     goto Start_Download
 )
-
-echo Download Complete. Waiting To Opening The File...
+echo Download Complete. Waiting Opening The File...
 start "" %output%
 pause
 goto Download
