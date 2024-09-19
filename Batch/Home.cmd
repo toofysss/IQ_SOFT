@@ -48,6 +48,7 @@ set mm=%dt:~4,2%
 set dd=%dt:~6,2%
 set date=%yyyy%-%mm%-%dd%
 set Backup_Loc="C:\Program Files (x86)\Microsoft SQL Server\MSSQL11.SALES_DEV\MSSQL\Backup\Speedo-%date%-%RandomNumber%.bak"
+@REM set Backup_Loc="D:\Program Files\Microsoft SQL Server\MSSQL15.SALES_DEV\MSSQL\Backup\Speedo-%date%-%RandomNumber%.bak"
 
 set Script_To_Factory=https://raw.githubusercontent.com/toofysss/IQ_SOFT/main/Batch/Factory.sql
 ::::::::::::::::::::::::::::::::: For SQL SERVER Info :::::::::::::::::::::::::::::::::::::::::::
@@ -63,8 +64,8 @@ set pharmacy_Database_Url=https://github.com/toofysss/IQ_SOFT/raw/main/Batch/pha
 ::::::::::::::::::::::::::::::::: For Download Info :::::::::::::::::::::::::::::::::::::::::::
 set Speedo_Full_Url=https://www.dropbox.com/scl/fi/jrrg2xtnw60a7a132zhx3/SPEEDOO-POS-1.3.7.6-FULL.exe?rlkey=25a6t62fis84n2daisvk8mr1p&dl=1
 set Speedo_Full_File=SPEEDOO-POS-1.3.7.6-FULL.exe
-set Speedo_Update_Url=https://www.dropbox.com/scl/fi/r03a6ujar6lwp09s2r3pm/SPEEDOO-POS-1.3.7.6-UPDATE.exe?rlkey=kae6meq14d5w0e19h9fra9ed3&e=2&dl=0
-set Speedo_Update_File=SPEEDOO-POS-1.3.7.6-UPDATE.exe
+set Speedo_Update_Url=https://www.dropbox.com/scl/fi/p5svl5yfmihdyuva6c158/SPEEDOO-POS-1.3.8.4-UPDATE.exe?rlkey=tms77f0sc9xe5he1l2m9mmvxu&e=1&dl=0
+set Speedo_Update_File=SPEEDOO-POS-1.3.8.4-UPDATE.exe
 @REM Speedo Rest Url
 set Speedo_Rest_Update_Url=https://www.dropbox.com/scl/fi/gnrjofsyk7kx80mcst0da/Speedoo-REST-3.0.5.3-UPDATE.exe?rlkey=yr29c8l7ula7gjzedq7zzjt01&dl=0
 set Speedo_Rest_Update_File=Speedoo-REST-3.0.5.3-UPDATE.exe
@@ -741,10 +742,28 @@ goto Printers
 
 ::::::::::::::::::::::::::::::::: For Update :::::::::::::::::::::::::::::::::::::::::::
 :Update 
+setlocal enabledelayedexpansion
+setlocal
+cls
+echo: 
+echo: 
+echo:                                IRAQ SOFT
+echo: 
+echo:                                 UPDATE
+echo: 
+echo:                   [1] Auto Update SPEEDO          
+echo:             __________________________________________________   
+set /p Choice="Enter A Menu Choice : "
+if "%Choice%" == "1" (
+    set url=%Speedo_Update_Url%
+    set output=%desktopPath%\%Speedo_Update_File%
+    goto AutoDownload
+)  
+@REM else (
+@REM     goto MainMenu
+@REM )
 
-echo This Operation Not Used Right Now 
-pause
-goto MainMenu
+
 goto Update
 
 ::::::::::::::::::::::::::::::::: For Update :::::::::::::::::::::::::::::::::::::::::::
@@ -885,3 +904,31 @@ echo Download Complete. Waiting Opening The File...
 start "" %output%
 pause
 goto Download
+
+
+:AutoDownload
+"C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "C:\Program Files (x86)\IraqSoft\IraqSoftArchive.rar" "C:\Program Files (x86)\IraqSoft\SPEECOO_POS\"
+"C:\Program Files\WinRAR\WinRAR.exe" x -y "C:\Program Files (x86)\IraqSoft\IraqSoftArchive.rar" "C:\TempExtract\C
+
+sqlcmd -S %SQL_Connection_SPEEDDO% -Q "BACKUP DATABASE SPEEDOO_DB TO DISK="%Backup_Loc%" WITH FORMAT">nul 2>&1
+
+
+curl -L --progress-bar --retry 5 --retry-delay 10 -C - -o %output% %url%
+if %errorlevel% neq 0 (
+    echo Download interrupted. Retrying...
+    timeout /t 10
+    goto AutoDownload
+)
+
+echo Waiting To Install The Update
+
+start "" "%output%" /quiet
+
+if %errorlevel% equ 0 (
+    echo Installation Complete. Cleaning up...
+    @REM del "%output%"
+) else (
+    echo Installation failed.
+)
+pause
+goto Update
