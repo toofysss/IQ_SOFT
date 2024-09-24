@@ -62,15 +62,15 @@ set pharmacy_Database_Url=https://github.com/toofysss/IQ_SOFT/raw/main/Batch/pha
 
 
 ::::::::::::::::::::::::::::::::: For Download Info :::::::::::::::::::::::::::::::::::::::::::
-set Speedo_Full_Url=https://www.dropbox.com/scl/fi/jrrg2xtnw60a7a132zhx3/SPEEDOO-POS-1.3.7.6-FULL.exe?rlkey=25a6t62fis84n2daisvk8mr1p&dl=1
-set Speedo_Full_File=SPEEDOO-POS-1.3.7.6-FULL.exe
+set Speedo_Full_Url=https://www.dropbox.com/scl/fi/inwa5nl2ua5hlm1blb7rf/SPEEDOO-POS-1.3.8.4-FULL.exe?rlkey=kpqtgcwg490kxqo01h0ygz746&e=1&dl=0
+set Speedo_Full_File=SPEEDOO-POS-1.3.8.4-FULL.exe
 set Speedo_Update_Url=https://www.dropbox.com/scl/fi/p5svl5yfmihdyuva6c158/SPEEDOO-POS-1.3.8.4-UPDATE.exe?rlkey=tms77f0sc9xe5he1l2m9mmvxu&e=1&dl=0
 set Speedo_Update_File=SPEEDOO-POS-1.3.8.4-UPDATE.exe
 @REM Speedo Rest Url
 set Speedo_Rest_Update_Url=https://www.dropbox.com/scl/fi/39s6a36r0hzj7g8bgnbyd/Speedoo-REST-3.0.5.7-UPDATE.exe?rlkey=hv665vott91ebgngbxeu8mvt6&e=1&st=x78dtckx&dl=0
 set Speedo_Rest_Update_File=Speedoo-REST-3.0.5.7-UPDATE.exe
-set Speedo_Rest_Full_Url=https://www.dropbox.com/scl/fi/izvlyhl097ve0act1qoc5/Speedoo-APP-3.0.5.3-FULL.exe?rlkey=d5jg4uhbmfmwpdvsql8pj0mjy&st=cb32fgpm&dl=0
-set Speedo_Rest_Full_File=Speedoo-REST-3.0.5.3-FULL.exe
+set Speedo_Rest_Full_Url=https://www.dropbox.com/scl/fi/dnyporwaojb1iysma0lk4/Speedoo-APP-3.0.5.7-FULL.exe?rlkey=b2rgp9yxvz2hn2cil5zv37she&e=1&st=1sulgbl7&dl=0
+set Speedo_Rest_Full_File=Speedoo-REST-3.0.5.7-FULL.exe
 @REM SQL Url
 set SQL_Url=https://www.dropbox.com/scl/fi/fitraeunq2m7bx0pff31y/SQLEXPRWT_x86_ENU-2.exe?rlkey=wwj2f0pbd621gnkl0od4naea9&st=85hiov5f&dl=0
 set SQL_File=SQLEXPRWT_x86_ENU-2.exe
