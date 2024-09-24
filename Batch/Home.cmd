@@ -67,8 +67,8 @@ set Speedo_Full_File=SPEEDOO-POS-1.3.7.6-FULL.exe
 set Speedo_Update_Url=https://www.dropbox.com/scl/fi/p5svl5yfmihdyuva6c158/SPEEDOO-POS-1.3.8.4-UPDATE.exe?rlkey=tms77f0sc9xe5he1l2m9mmvxu&e=1&dl=0
 set Speedo_Update_File=SPEEDOO-POS-1.3.8.4-UPDATE.exe
 @REM Speedo Rest Url
-set Speedo_Rest_Update_Url=https://www.dropbox.com/scl/fi/gnrjofsyk7kx80mcst0da/Speedoo-REST-3.0.5.3-UPDATE.exe?rlkey=yr29c8l7ula7gjzedq7zzjt01&dl=0
-set Speedo_Rest_Update_File=Speedoo-REST-3.0.5.3-UPDATE.exe
+set Speedo_Rest_Update_Url=https://www.dropbox.com/scl/fi/39s6a36r0hzj7g8bgnbyd/Speedoo-REST-3.0.5.7-UPDATE.exe?rlkey=hv665vott91ebgngbxeu8mvt6&e=1&st=x78dtckx&dl=0
+set Speedo_Rest_Update_File=Speedoo-REST-3.0.5.7-UPDATE.exe
 set Speedo_Rest_Full_Url=https://www.dropbox.com/scl/fi/izvlyhl097ve0act1qoc5/Speedoo-APP-3.0.5.3-FULL.exe?rlkey=d5jg4uhbmfmwpdvsql8pj0mjy&st=cb32fgpm&dl=0
 set Speedo_Rest_Full_File=Speedoo-REST-3.0.5.3-FULL.exe
 @REM SQL Url
@@ -752,13 +752,21 @@ echo:
 echo:                                 UPDATE
 echo: 
 echo:                   [1] Auto Update SPEEDO          
+echo:                   [2] Auto Update SPEEDO Rest         
+echo:                   [0] Go Back        
 echo:             __________________________________________________   
 set /p Choice="Enter A Menu Choice : "
 if "%Choice%" == "1" (
     set url=%Speedo_Update_Url%
     set output=%desktopPath%\%Speedo_Update_File%
     goto AutoDownload
-)  
+) else if "%Choice%" == "2" (
+    set url=%Speedo_Rest_Update_Url%
+    set output=%desktopPath%\%Speedo_Rest_Update_File%
+    goto AutoDownloadSpeedoRest
+) else (
+    goto MainMenu
+)
 @REM else (
 @REM     goto MainMenu
 @REM )
@@ -926,7 +934,34 @@ start "" "%output%" /quiet
 
 if %errorlevel% equ 0 (
     echo Installation Complete. Cleaning up...
-    @REM del "%output%"
+) else (
+    echo Installation failed.
+)
+pause
+goto Update
+
+
+
+:AutoDownloadSpeedoRest
+"C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "C:\Program Files (x86)\IraqSoft\IraqSoftArchive.rar" "C:\Program Files (x86)\IraqSoft\SPEEDOO\"
+"C:\Program Files\WinRAR\WinRAR.exe" x -y "C:\Program Files (x86)\IraqSoft\IraqSoftArchive.rar" "C:\TempExtract\C
+
+sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "BACKUP DATABASE RESTAURANT_DB TO DISK="%Backup_Loc%" WITH FORMAT">nul 2>&1
+
+
+curl -L --progress-bar --retry 5 --retry-delay 10 -C - -o %output% %url%
+if %errorlevel% neq 0 (
+    echo Download interrupted. Retrying...
+    timeout /t 10
+    goto AutoDownloadSpeedoRest
+)
+
+echo Waiting To Install The Update
+
+start "" "%output%" /quiet
+
+if %errorlevel% equ 0 (
+    echo Installation Complete. Cleaning up...
 ) else (
     echo Installation failed.
 )
