@@ -788,7 +788,8 @@ echo:
 echo:                               Troubleshoot
 echo: 
 echo:                   [1] Date/Time           [2] Delete Locale         
-echo:                   [3] Enable Sql Service  [0] Go Back  
+echo:                   [3] Enable Sql Service  [4] Fix Pc Sleeping 
+echo:                   [0] Go Back  
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -809,7 +810,13 @@ if "%Choice%" == "1" (
     echo Success
     pause
     goto Troubleshoot
-)   else (
+)   else if "%Choice%" == "4" (
+    powercfg /change standby-timeout-dc 0
+    powercfg /change standby-timeout-ac 0
+    echo Success
+    pause
+    goto Troubleshoot
+)  else (
     goto MainMenu
 )
 
