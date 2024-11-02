@@ -789,8 +789,9 @@ echo:                               Troubleshoot
 echo: 
 echo:                   [1] Date/Time           [2] Delete Locale         
 echo:                   [3] Enable Sql Service  [4] Fix Pc Sleeping 
-echo:                   [5] Hide Folders        [6] Set SIP Automatic Enable
-echo:                   [0] Go Back 
+echo:                   [5] Hide Folders        [0] Go Back
+@REM echo:                   [5] Hide Folders        [6] Set SIP Automatic Enable
+@REM echo:                   [0] Go Back 
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -820,10 +821,12 @@ if "%Choice%" == "1" (
 )   else if "%Choice%" == "5" (
     goto HideFOlders
 
-)    else if "%Choice%" == "6" (
-    mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\connect.lnk" "C:\Sip\connect.BAT"
-    PAUSE
-)   else (
+) 
+@REM    else if "%Choice%" == "6" (
+@REM     mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\connect.lnk" "C:\Sip\connect.BAT"
+@REM     PAUSE
+@REM ) 
+  else (
     goto MainMenu
 )
 
