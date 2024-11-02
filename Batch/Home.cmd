@@ -789,7 +789,8 @@ echo:                               Troubleshoot
 echo: 
 echo:                   [1] Date/Time           [2] Delete Locale         
 echo:                   [3] Enable Sql Service  [4] Fix Pc Sleeping 
-echo:                   [0] Go Back  
+echo:                   [5] Hide Folders        [6] Set SIP Automatic Enable
+echo:                   [0] Go Back 
 echo:             __________________________________________________   
 
 set /p Choice="Enter A Menu Choice : "
@@ -816,7 +817,13 @@ if "%Choice%" == "1" (
     echo Success
     pause
     goto Troubleshoot
-)  else (
+)   else if "%Choice%" == "5" (
+    goto HideFOlders
+
+)    else if "%Choice%" == "6" (
+    mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\connect.lnk" "C:\Sip\connect.BAT"
+    PAUSE
+)   else (
     goto MainMenu
 )
 
@@ -949,28 +956,11 @@ goto Update
 
 
 
-:AutoDownloadSpeedoRest
-"C:\Program Files\WinRAR\WinRAR.exe" a -r -ep1 "C:\Program Files (x86)\IraqSoft\IraqSoftArchive.rar" "C:\Program Files (x86)\IraqSoft\SPEEDOO\"
-"C:\Program Files\WinRAR\WinRAR.exe" x -y "C:\Program Files (x86)\IraqSoft\IraqSoftArchive.rar" "C:\TempExtract\C
+:HideFOlders
+set /p Hide_Url="Enter The Link Of The File You Want To Hide : "
+attrib +h %Hide_Url%
 
-sqlcmd -S %SQL_Connection_SPEEDDO_REST% -Q "BACKUP DATABASE RESTAURANT_DB TO DISK="%Backup_Loc%" WITH FORMAT">nul 2>&1
+echo Success
 
-
-curl -L --progress-bar --retry 5 --retry-delay 10 -C - -o %output% %url%
-if %errorlevel% neq 0 (
-    echo Download interrupted. Retrying...
-    timeout /t 10
-    goto AutoDownloadSpeedoRest
-)
-
-echo Waiting To Install The Update
-
-start "" "%output%" /quiet
-
-if %errorlevel% equ 0 (
-    echo Installation Complete. Cleaning up...
-) else (
-    echo Installation failed.
-)
-pause
-goto Update
+PAUSE
+goto Troubleshoot
