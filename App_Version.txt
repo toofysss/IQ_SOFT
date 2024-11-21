@@ -1,2 +1,2 @@
 MANDOOB_VERSION:1.5
-MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/iocnpblkxb13z8jzf8e2u/Sip.exe?rlkey=rvrixro5fzit16pbvwpyjq6bh&e=1&st=iy4vnvog&dl=1
+MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/en9e15a3vfev03c6bvm2i/.apk?rlkey=ftki4n4e7qzeox2vitqtqgm9h&e=1&st=8a9ak39u&dl=1
