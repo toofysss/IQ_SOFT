@@ -1,4 +1,8 @@
-MANDOOB_VERSION:2.0
-MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/r8r2zu89mojz65yynse32/MANDOOB-2.0.apk?rlkey=tavcbu4e10invenac018lxrk3&st=yxpnhe8z&dl=1
+MANDOOB_VERSION:1.8
+MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/t9v1zp6p8zfe2by0fr1o3/MANDOOB-2.2?rlkey=wxf4ml8rfv9bla3bgocz8d8iq&st=gsj29eps&dl=1
 TABOOR_VERSION:1.5
 TABOOR_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
+
+SPEEDOO_PHONE_VERSION:1.5
+SPEEDOO_PHONE_ENABLE:1
+SPEEDOO_PHONE_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
