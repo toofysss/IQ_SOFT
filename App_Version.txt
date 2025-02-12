@@ -11,5 +11,5 @@ SPEEDOO_PHONE_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/M
 SPEEDOO_REST_MENU_ADMIN_VERSION:1.1
 SPEEDOO_REST_MENU_ADMIN_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
 
-ALSADY_VERSION:1.1
-ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/e2kdx8d15h36d88nfi3pc/ALSADY.apk?rlkey=j2nropeulhgon0t80mw3as8av&st=b3qe7pwg&dl=1
+ALSADY_VERSION:1.3
+ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/otvsfb1kjca2jhjbvorpw/ALSADY.apk?rlkey=6dwq8me29lx1nl6tdhrjobpr6&st=djohkgmp&dl=1
