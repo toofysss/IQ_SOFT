@@ -12,4 +12,4 @@ SPEEDOO_REST_MENU_ADMIN_VERSION:1.1
 SPEEDOO_REST_MENU_ADMIN_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
 
 ALSADY_VERSION:2.4
-ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/o3szntrmwzl6ryqzzt1r0/ALSADY.apk?rlkey=9sbx7r5l9g1dgqekl7l4ilf91&st=09qqw0kd&dl=1
+ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/0lhmyf3la3ye3colc812t/ALSADY.apk?rlkey=ajwryplrfbrrjuqirl7ne9iyt&st=00akupqr&dl=1
