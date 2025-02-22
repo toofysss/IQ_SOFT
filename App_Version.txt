@@ -1,15 +1,11 @@
 MANDOOB_VERSION:3.3
 MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/52i11k3yr1h8kiwt514ef/MANDOOB-3.3.apk?rlkey=a7q58i4gjsidu2tboqy0xo3z2&st=kpt7u6x4&dl=1
+
 TABOOR_VERSION:1.5
 TABOOR_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
-
-SPEEDOO_PHONE_VERSION:1.5
-SPEEDOO_PHONE_ENABLE:1
-SPEEDOO_PHONE_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
-
 
 SPEEDOO_REST_MENU_ADMIN_VERSION:1.1
 SPEEDOO_REST_MENU_ADMIN_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
 
-ALSADY_VERSION:2.5
-ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/0lhmyf3la3ye3colc812t/ALSADY.apk?rlkey=ajwryplrfbrrjuqirl7ne9iyt&st=00akupqr&dl=1
+ALSADY_VERSION:2.7
+ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/gbpblcbhx4chobmu6g8jc/ALSADY-2.7.apk?rlkey=0ukal5tnd60s4n02gr5lt6dkg&st=93vp5gyu&dl=1
