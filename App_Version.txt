@@ -1,5 +1,5 @@
-MANDOOB_VERSION:3.4
-MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/ammjzodgxpmchoosbhnkn/MANDOOB-3.4.apk?rlkey=xqjrrvr55655dilbe41uqne2g&st=9m49y94g&dl=1
+MANDOOB_VERSION:3.5
+MANDOOB_LINK_UPDATE:https://www.dropbox.com/scl/fi/q7w2uvej95pcpl0ypr4za/MANDOOB-3.5.apk?rlkey=51pv7by3tphlt24iemknq09qy&st=nbk2u7vn&dl=1
 
 TABOOR_VERSION:1.5
 TABOOR_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
