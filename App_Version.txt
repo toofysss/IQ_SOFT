@@ -9,3 +9,6 @@ SPEEDOO_REST_MENU_ADMIN_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uv
 
 ALSADY_VERSION:3.2
 ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/1gbthdfv94tq7s9ckku7b/ALSADY-3.2.apk?rlkey=o5gp6c9ibmbb4zq2i9p0mta7a&st=hmq94i06&dl=1
+
+SPEEDOO_PHONE_VERSION:2.5
+SPEEDOO_PHONE_LINK_UPDATE:https://www.dropbox.com/scl/fi/codlyt0dg7uav3sz3exzv/SPEEDOO-PHONE-2.5.apk?rlkey=pbg04x45zz9h59rgdblpn4qnc&st=ad6my5oi&dl=1
