@@ -7,8 +7,8 @@ TABOOR_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.
 SPEEDOO_REST_MENU_ADMIN_VERSION:1.1
 SPEEDOO_REST_MENU_ADMIN_LINK_UPDATE:https://www.dropbox.com/scl/fi/k9cvcr77gi0uve3hbu0k4/MANDOOB.apk?rlkey=w3wpa81ix2h0e6hn327qoatc8&st=iro6ohl5&dl=1
 
-ALSADY_VERSION:3.9
-ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/mteg6sshqauuh7suwcxx5/ALSADY.apk?rlkey=iadzkwr36kld2p8a7h6nk7yf6&st=hyuyu7r8&dl=1
+ALSADY_VERSION:4.0
+ALSADY_LINK_UPDATE:https://www.dropbox.com/scl/fi/2u1yqemugzp2npfmd570n/ALSADY4.0.apk?rlkey=kylbvkkh6820k81jvv1d0c25z&st=a2jfeebc&dl=1
 
 SPEEDOO_PHONE_VERSION:2.5
 SPEEDOO_PHONE_LINK_UPDATE:https://www.dropbox.com/scl/fi/6gbpplwumsjvfssj3ngte/SPEEDOO-PHONE-2.5.apk?rlkey=tt92mjox7w4u4ur75cbmgvtql&st=kzubj6ah&dl=1
